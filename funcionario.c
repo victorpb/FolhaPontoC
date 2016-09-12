@@ -292,7 +292,7 @@ void MenorSalarioLiquido(){
 } */
 
 
-void main(){
+int main(){
 	matriz();
 	int opcao=-1;
 	setlocale(LC_ALL, "Portuguese");
@@ -339,5 +339,5 @@ void main(){
 			break;
 		}
 	}
-}
-//return 0; }
+
+return 0; }
