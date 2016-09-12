@@ -1,0 +1,188 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <malloc.h>
+
+int anuenio=0, MatrizFunc[10][2];
+float rendimento=0, gratificacao=0, despesa=0, sallqd=0, valtrp=0, INSS=0, IRRF=0;
+void matriz(){
+	int linha,coluna;
+	for(linha=0;linha<10;linha++){
+		for (coluna=0;coluna<2;coluna++){
+			MatrizFunc[linha][coluna]=-1;
+		}
+	}
+}
+void MenuPrincipal(){
+printf("\n\t*****FOLHA DE PAGAMENTO***** \n");
+printf("\n\t1----INCLUIR FUNCIONÁRIO");
+printf("\n\t2----ALTERAR FUNCIONÁRIO");
+printf("\n\t3----EXCLUIR FUNCIONÁRIO");
+printf("\n\t4----FOLHA DE PAGAMENTO");
+printf("\n\t5----MAIOR SALÁRIO LÍQUIDO");
+printf("\n\t6----MENOR SALÁRIO LÍQUIDO");
+printf("\n\t0----SAIR DO SISTEMA \n\t");
+}
+void IncluirFuncionario(){
+	int linha, coluna, LimFun=0;
+	for(linha=0;linha<10;linha++){
+		if(MatrizFunc[linha][0]==-1){
+			printf("\n\tInforme o número de matrícula: ");
+			scanf("\t%d", &MatrizFunc[linha][0]);
+			printf("\n\tInforme o Salário Bruto: ");
+			scanf("\t%d", &MatrizFunc[linha][1]);
+			printf("\n\tInforme o Tempo de trabalho (em anos): ");
+			scanf("\t%d", &MatrizFunc[linha][2]);
+			LimFun=1;
+			break;
+		}
+	}
+
+	if(LimFun==1){ printf("\n\tFUNCIONÁRIO CADASTRADO COM SUCESSO!\n\t");
+	}
+	if(LimFun==0){ printf("\n\nLIMITE DE CADASTROS ATINGIDO!\n\n\t");
+	}
+}
+
+void AlterarFuncionario(){
+int linha, matricula;
+printf("\n\tInforme o número de matrícula: ");
+scanf("\t%d",&matricula);
+	for(linha=0;linha<2;linha++){
+           if(matricula==MatrizFunc[linha][0]) {
+	    printf("\t\nInforme o salário bruto: ");
+            scanf("\t%d", &MatrizFunc[linha][1]);
+            printf("\n\tInforme o Tempo de trabalho (em anos): ");
+            scanf("\t%d", &MatrizFunc[linha][2]); }
+	   else {
+            printf("\tMATRÍCULA INVÁLIDA, TENTE NOVAMENTE!\n\t");
+			}
+	}
+}
+
+void ExcluirFuncionario(){
+	int linha, matricula, LimFun=0;
+	printf("\nInforme o número da matrícula: ");
+	scanf("\t%d",&matricula);
+
+	for(linha=0;linha<10;linha++){
+		if(MatrizFunc[linha][0]==matricula){
+			MatrizFunc[linha][0]=-1;
+			LimFun=1;
+			break;
+		}
+	}
+	if(LimFun==0) printf("\n\tMATRÍCULA NÃO CADASTRADA, TENTE NOVAMENTE!\n\t");
+	if(LimFun==1) printf("\n\tREMOVIDO COM SUCESSO!\n\t");
+}
+
+void rendimento1(){ //ALTEREI O NOME DA FUNÇÃO
+    int linha = 0; //INICIALIZEI A VARIAVEL LINHA
+	gratificacao=((MatrizFunc[linha][1])*0.15);
+    printf("%f", gratificacao);
+    printf("\n");
+
+    printf("%d", anuenio);
+}
+
+void FolhaDePagamento(){
+	int linha, Teste=0;
+	float med=0;
+	for(linha=0;linha<10;linha++){
+		if(MatrizFunc[linha][0]!=-1){
+			med=(MatrizFunc[linha][1]);
+			printf("\t--------------------FOLHA DE PAGAMENTO----------------------\n");
+			printf("\t-> Matrícula: %d\n",MatrizFunc[linha][0]);
+			printf("\t-> Salário: %f\n",med);
+			printf("\t------------------------------------------------------------\n\n");
+			Teste=1;
+		}
+	}
+	if(Teste==0) printf("\n\tNÃO HÁ DADOS ARMAZENADOS, NENHUM FUNCIONÁRIO CADASTRADO!\n\t");
+}
+/* void MaiorSalarioLiquido(){
+	int teste=medias();
+	ordenarVetorMedia();
+	int i=0;
+	if(teste==0) printf("\tNÃO HÁ DADOS ARMAZENADOS, NENHUM FUNCIONÁRIO CADASTRADO!\n");
+	if(teste==1){
+		printf("\n\n\t---------------------MAIOR SALÁRIO----------------------\n");
+		printf("\t-> Matrícula: %d\n",vetMatricula[i]);
+		printf("\t-> Salário: %f\n",vetMedia[i]);
+		printf("\t--------------------------------------------------------\n\n");
+	}
+}
+void MenorSalarioLiquido(){
+	int teste=medias();
+	ordenarVetorMedia();
+	int i=0;
+	if(teste==0) printf("\tNÃO HÁ DADOS ARMAZENADOS, NENHUM FUNCIONÁRIO CADASTRADO!\n");
+	if(teste==1){
+		printf("\n\n\t---------------------MENOR SALÁRIO----------------------\n");
+		printf("\t-> Matrícula: %d\n",vetMatricula[i]);
+		printf("\t-> Salário: %f\n",vetMedia[i]);
+		printf("\t--------------------------------------------------------\n\n");
+	}
+} */
+
+void SalarioLiquido(){
+	//float rendimento=0, gratificacao=0, despesa=0, sallqd=0, valtrp=0, INSS=0, IRRF=0;
+
+
+	printf("aqui");
+
+}
+
+int main(){
+	matriz();
+	int opcao=-1;
+	setlocale(LC_ALL, "Portuguese");
+	while(opcao!=0){
+		MenuPrincipal();
+		scanf("\t%d", &opcao);
+		switch(opcao){
+		case 1:
+			IncluirFuncionario();
+			system("pause");
+			system("cls");
+			break;
+		case 2:
+			AlterarFuncionario();
+			system("pause");
+			break;
+		case 3:
+			ExcluirFuncionario();
+			system("pause");
+			system("cls");
+			break;
+		case 4:
+			FolhaDePagamento();
+			system("pause");
+			system("cls");
+			break;
+	/*	case 5:
+			MaiorSalarioLiquido();
+			system("pause");
+			system("cls");
+			break;
+		case 6:
+			MenorSalarioLiquido();
+			system("pause");
+			system("cls");
+			break;	*/
+        case 7: //ALTEREI AQUI PARA FAZER TESTE
+            rendimento1();
+			system("pause");
+			system("cls");
+			break;
+		case 0:
+			printf("\n\tFINALIZANDO O SISTEMA...\t");
+			break;
+		default:
+			printf("\n\tOPÇÃO INVÁLIDA!\n\t");
+			system("pause");
+			system("cls");
+			break;
+		}
+	}
+return 0; }
