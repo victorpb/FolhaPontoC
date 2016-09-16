@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#include <malloc.h>
 
 float MatrizFunc[10][6];
 //FUNÇÕES DE CALCULOS
@@ -266,30 +265,39 @@ void FolhaDePagamento(){
     }
 	if(Teste==0) printf("\n\tNÃO HÁ DADOS ARMAZENADOS, NENHUM FUNCIONÁRIO CADASTRADO!\n\t");
 }
-/* void MaiorSalarioLiquido(){
-	int teste=medias();
-	ordenarVetorMedia();
-	int i=0;
-	if(teste==0) printf("\tNÃO HÁ DADOS ARMAZENADOS, NENHUM FUNCIONÁRIO CADASTRADO!\n");
-	if(teste==1){
-		printf("\n\n\t---------------------MAIOR SALÁRIO----------------------\n");
-		printf("\t-> Matrícula: %d\n",vetMatricula[i]);
-		printf("\t-> Salário: %f\n",vetMedia[i]);
-		printf("\t--------------------------------------------------------\n\n");
-	}
+void MaiorSalarioLiquido(){
+	float MaiorSalario = -1;
+	int linha, linhaPrint;
+	linhaPrint = -1;
+	for(linha=0;linha<10;linha++){
+
+            if(MatrizFunc[linha][5] > MaiorSalario){
+                linhaPrint = linha;
+                MaiorSalario = MatrizFunc[linha][5];
+            }
+        }
+    if (linhaPrint != -1){
+    	ImprimeFolhaPagamento(linhaPrint);
+    }
+
 }
 void MenorSalarioLiquido(){
-	int teste=medias();
-	ordenarVetorMedia();
-	int i=0;
-	if(teste==0) printf("\tNÃO HÁ DADOS ARMAZENADOS, NENHUM FUNCIONÁRIO CADASTRADO!\n");
-	if(teste==1){
-		printf("\n\n\t---------------------MENOR SALÁRIO----------------------\n");
-		printf("\t-> Matrícula: %d\n",vetMatricula[i]);
-		printf("\t-> Salário: %f\n",vetMedia[i]);
-		printf("\t--------------------------------------------------------\n\n");
+    float MenorSalario = 9999999999999.98;
+	int linha, linhaPrint;
+	linhaPrint = -1;
+	for(linha=0;linha<10;linha++){
+            if (MatrizFunc[linha][5] != -1){
+
+            if(MatrizFunc[linha][5] < MenorSalario){
+                linhaPrint = linha;
+                MenorSalario = MatrizFunc[linha][5];
+            }
+        }
 	}
-} */
+    if (linhaPrint != -1){
+    	ImprimeFolhaPagamento(linhaPrint);
+    }
+}
 
 
 int main(){
