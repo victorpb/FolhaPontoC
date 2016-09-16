@@ -327,7 +327,7 @@ int main(){
 			system("pause");
 			system("cls");
 			break;
-	/*	case 5:
+		case 5:
 			MaiorSalarioLiquido();
 			system("pause");
 			system("cls");
@@ -336,7 +336,7 @@ int main(){
 			MenorSalarioLiquido();
 			system("pause");
 			system("cls");
-			break;	*/
+			break;
 		case 0:
 			printf("\n\tFINALIZANDO O SISTEMA...\t");
 			break;
